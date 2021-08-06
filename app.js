@@ -13,8 +13,11 @@ connection.connect(function(err){
   (err) ? console.log(err) : console.log(connection);
 });
 
-app.get('/api/news', (req, res) => {
-  res.json({ message: 'I am a message from Server!'});
+app.get('/api/ds_cau_hoi', (req, res) => {
+  var sql = "SELECT * FROM ds_cau_hoi ";
+  connection.query(sql, function(err, results) {
+    if (err) throw err;
+    res.json({ds_cau_hoi: results});
+  });
 });
-
 app.listen(4200, () => console.log('App listening on port 4200'));
